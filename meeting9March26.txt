@@ -1,0 +1,19 @@
+PrimeNG
+figma
+tailwindcss
+angular state management and memory management
+create an ecommerce application with fundamental features like
+add to cart auth guard login data store etc.
+but first create a document and write down application purpose
+what is application, what are all the features of application 
+who are users of application, what are different users abilities like admin and customer
+plan of all components/pages of application
+use json-server db.json
+complete database breakdown
+step by step list for features
+breakdown of each page
+proper structure
+proper flow
+proper mindset
+proper step by step development plan
+ngrx

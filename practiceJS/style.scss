@@ -1,0 +1,23 @@
+$light:#ffffff;
+$dark:#000000;
+$text: #ffffff;
+$mode: $light;
+body{
+    background-color: $light;
+    ul{
+        @if $mode == $light {
+            background-color: $dark;
+            color: $text;
+        }
+        @else{
+            background-color: #ff0000;
+            color: #000000;
+        }
+        @for $i from 1 to 12 {
+            .item-#{$i}{
+                // font-size: calc($i * 5px);
+                font-size: #{$i * 3px};
+            }
+        }
+    }
+}

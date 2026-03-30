@@ -1,0 +1,40 @@
+body {
+  background-color: #ffffff;
+}
+body ul {
+  background-color: #000000;
+  color: #ffffff;
+}
+body ul .item-1 {
+  font-size: 3px;
+}
+body ul .item-2 {
+  font-size: 6px;
+}
+body ul .item-3 {
+  font-size: 9px;
+}
+body ul .item-4 {
+  font-size: 12px;
+}
+body ul .item-5 {
+  font-size: 15px;
+}
+body ul .item-6 {
+  font-size: 18px;
+}
+body ul .item-7 {
+  font-size: 21px;
+}
+body ul .item-8 {
+  font-size: 24px;
+}
+body ul .item-9 {
+  font-size: 27px;
+}
+body ul .item-10 {
+  font-size: 30px;
+}
+body ul .item-11 {
+  font-size: 33px;
+}/*# sourceMappingURL=style.css.map */

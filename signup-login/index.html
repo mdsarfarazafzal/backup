@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Authentication</title>
+  </head>
+  <body>
+    <div
+      class="bg-neutral-100 min-h-screen min-w-screen flex items-center justify-center p-5"
+    >
+      <div
+        class="hidden bg-neutral-50 p-8 rounded-lg shadow-lg w-full max-w-md"
+        id="register-view"
+      >
+        <h2 class="text-gray-800 text-3xl font-bold mb-6 text-center">
+          Welcome
+        </h2>
+        <form id="register-form">
+          <div class="flex flex-col gap-5">
+            <div class="flex justify-between items-center gap-5">
+              <div>
+                <label for="reg-email" class="text-sm font-medium text-gray-700"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="reg-email"
+                  class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="number" class="text-sm font-medium text-gray-700"
+                  >Number</label
+                >
+                <input
+                  type="number"
+                  id="number"
+                  class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+                  placeholder="Enter your number"
+                  required
+                />
+              </div>
+            </div>
+            <div class="flex justify-between items-center gap-5">
+              <div>
+                <label for="full-name" class="text-sm font-medium text-gray-700"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="full-name"
+                  class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  for="reg-password"
+                  class="text-sm font-medium text-gray-700"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  id="reg-password"
+                  class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <p
+                class="text-sm text-center py-2 text-red-500 reg-error-msg"
+              ></p>
+              <button
+                id="register-btn"
+                type="submit"
+                class="w-full font-semibold text-lg bg-gray-800 text-neutral-50 py-2 rounded hover:bg-gray-950 transition-colors cursor-pointer"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          Already have an account?
+          <span
+            id="toggle-to-login"
+            class="text-gray-800 font-medium cursor-pointer hover:underline"
+            >Login here</span
+          >
+        </p>
+      </div>
+      <div
+        class="bg-neutral-50 p-8 rounded-lg shadow-lg w-full max-w-md"
+        id="login-view"
+      >
+        <h2 class="text-gray-800 text-3xl font-bold mb-6 text-center">
+          Welcome Back
+        </h2>
+        <form id="login-form">
+          <div class="flex flex-col gap-5">
+            <div>
+              <label for="log-email" class="text-sm font-medium text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="log-email"
+                class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="log-password"
+                class="text-sm font-medium text-gray-700"
+                >Password</label
+              >
+
+              <input
+                type="password"
+                id="log-password"
+                class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none text-gray-700"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+            <div>
+              <p
+                class="text-sm text-center py-2 text-red-500 log-error-msg"
+              ></p>
+              <button
+                id="login-btn"
+                type="submit"
+                class="w-full font-semibold text-lg bg-gray-800 text-neutral-50 py-2 rounded hover:bg-gray-950 transition-colors cursor-pointer"
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          New here?
+          <span
+            id="toggle-to-register"
+            class="text-gray-800 font-medium cursor-pointer hover:underline"
+            >Register here</span
+          >
+        </p>
+      </div>
+      <div
+        class="hidden flex flex-col items-center bg-neutral-50 p-8 rounded-lg shadow-lg w-full max-w-md"
+        id="app-view"
+      >
+        <h2
+          id="greet"
+          class="text-gray-800 text-3xl font-bold mb-6 text-center"
+        ></h2>
+        <table
+          class="mb-8 border-separate border-spacing-x-4 border-spacing-y-1 border border-gray-300 p-2 rounded-lg"
+        >
+          <tr>
+            <td class="font-medium text-gray-700">Email:</td>
+            <td id="user-email" class="text-gray-800"></td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700">Full Name:</td>
+            <td id="user-fullname" class="text-gray-800"></td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-700">Number:</td>
+            <td id="user-number" class="text-gray-800"></td>
+          </tr>
+        </table>
+        <button
+          id="logout-btn"
+          class="w-full font-semibold text-lg bg-gray-800 text-neutral-50 py-2 rounded hover:bg-gray-950 transition-colors cursor-pointer"
+        >
+          Logout
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<div
+  class="flex min-h-screen flex-col justify-center items-center bg-slate-100 p-4"
+>
+  <div
+    class="bg-neutral-50 p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200"
+  >
+    <header class="mb-8">
+      <h1 class="text-gray-800 text-3xl font-bold text-center">My Tasks</h1>
+    </header>
+
+    <form (ngSubmit)="addTask()" class="mb-8">
+      <div class="flex gap-3">
+        <input
+          type="text"
+          name="taskText"
+          [(ngModel)]="newTaskText"
+          placeholder="Add a new task..."
+          class="w-full py-3 px-4 bg-white border-b-2 border-gray-200 focus:border-gray-800 focus:outline-none transition-all font-medium text-gray-700"
+        />
+        <button
+          type="submit"
+          [disabled]="!newTaskText.trim()"
+          class="bg-gray-800 text-neutral-50 p-2 rounded-lg hover:bg-gray-950 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Add
+        </button>
+      </div>
+    </form>
+
+    <ul class="max-h-80 flex flex-col gap-3 overflow-y-auto pr-2">
+      @for (task of tasks; track task.id) {
+        <li
+          *ngIf="!task.isEditing"
+          class="flex items-center gap-2 p-3 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all"
+        >
+          <div class="flex flex-1 items-center gap-3">
+            <div
+              (click)="toggleTask(task.id)"
+              class="w-6 h-6 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all"
+              [class]="
+                task.completed
+                  ? 'bg-green-500 border-green-500'
+                  : 'border-slate-300 hover:border-slate-500'
+              "
+            ></div>
+            <span
+              [class.line-through]="task.completed"
+              [class.text-slate-400]="task.completed"
+              class="text-sm font-medium text-slate-700 transition-all"
+            >
+              {{ task.text }}
+            </span>
+          </div>
+
+          <button
+            (click)="deleteTask(task.id)"
+            class="text-slate-300 cursor-pointer hover:text-red-500 transition-colors"
+          >
+            Delete
+          </button>
+          <button
+            (click)="toggleEdit(task.id)"
+            class="text-slate-300 cursor-pointer hover:text-slate-500 transition-colors"
+          >
+            Edit
+          </button>
+        </li>
+        <li
+          *ngIf="task.isEditing"
+          class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all"
+        >
+          <div class="flex flex-1 items-center gap-3">
+            <input
+              type="text"
+              name="editText"
+              [(ngModel)]="editText"
+              class="w-full py-1 px-2 rounded-lg bg-white border border-gray-200 focus:border-gray-800 focus:outline-none transition-all font-sm text-gray-700"
+            />
+          </div>
+
+          <button
+            (click)="saveEdit(task.id)"
+            class="text-slate-500 cursor-pointer hover:text-green-500 transition-colors"
+          >
+            Save
+          </button>
+          <button
+            (click)="toggleEdit(task.id)"
+            class="text-slate-500 cursor-pointer hover:text-red-500 transition-colors"
+          >
+            Cancel
+          </button>
+        </li>
+      }
+    </ul>
+    @if (tasks.length === 0) {
+      <div class="text-center py-10">
+        <p class="text-slate-500 font-medium">
+          No tasks found. Start by adding one!
+        </p>
+      </div>
+    }
+
+    <footer
+      class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center"
+    >
+      <button
+        (click)="clearCompleted()"
+        class="text-sm cursor-pointer font-bold text-slate-500 hover:text-green-500 transition-colors"
+      >
+        Clear Checked
+      </button>
+      <button
+        (click)="onLogout()"
+        class="text-sm cursor-pointer font-bold text-slate-500 hover:text-red-600 transition-colors"
+      >
+        Logout
+      </button>
+      <div class="text-xs font-bold text-slate-400 uppercase">
+        {{ pendingTasks() }} Tasks Pending
+      </div>
+      
+    </footer>
+  </div>
+</div>

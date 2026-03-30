@@ -1,0 +1,82 @@
+<div class="flex justify-center items-center h-screen">
+  <div class="bg-neutral-50 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-gray-800 text-3xl font-bold mb-6 text-center">Welcome</h2>
+    <form (ngSubmit)="createUser()" #form="ngForm">
+      <div class="flex flex-col gap-5">
+        <div>
+          <label for="reg-email" class="text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            [(ngModel)]="userObj.email"
+            name="email"
+            type="email"
+            id="reg-email"
+            class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+            placeholder="Enter your email"
+            required
+            email
+            #email="ngModel"
+          />
+          @if (email.touched && email.errors?.["required"]) {
+            <p class="text-sm text-red-600 mt-2">Email is required</p>
+          }
+          @if (email.touched && email.errors?.["email"]) {
+            <p class="text-sm text-red-600 mt-2">Enter a valid email</p>
+          }
+        </div>
+        <div>
+          <label for="reg-password" class="text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <input
+            [(ngModel)]="userObj.password"
+            name="password"
+            type="password"
+            id="reg-password"
+            class="w-full py-2 border-b border-gray-300 focus:border-gray-500 focus:outline-none"
+            placeholder="Enter your password"
+            required
+            minlength="8"
+            #password="ngModel"
+          />
+          @if (password.touched && password.errors?.["required"]) {
+            <p class="text-sm text-red-600 mt-2">Password is required</p>
+          }
+          @if (password.touched && password.errors?.["minlength"]) {
+            <p class="text-sm text-red-600 mt-2">
+              Password must be atleast 8 characters long
+            </p>
+          }
+        </div>
+
+        <div>
+          <p class="text-sm text-center text-red-600 mb-2">
+            {{ errorMsg }}
+          </p>
+          <button
+            [disabled]="!form.valid"
+            id="register-btn"
+            type="submit"
+            class="w-full font-semibold text-lg bg-gray-800 text-neutral-50 py-2 rounded"
+            [class]="
+              form.valid
+                ? 'hover:bg-gray-950 transition-colors cursor-pointer'
+                : ''
+            "
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+    <p class="text-center text-sm text-gray-600 mt-4">
+      Already have an account?
+      <span
+        routerLink="/login"
+        class="text-gray-800 font-medium cursor-pointer hover:underline"
+        >Login here</span
+      >
+    </p>
+  </div>
+</div>

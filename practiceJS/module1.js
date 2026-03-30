@@ -1,0 +1,12 @@
+// const { sum:add, multiply, divide } = require("./module2.js");
+// console.log("Sum: ", add(5, 10));
+// console.log("Multiply: ", multiply(5, 10));
+// console.log("Divide: ", divide(10, 2));
+// import sum, { multiply as mul, divide } from "./module2.js";
+// import { multiply, divide } from "./module2.js";
+import { sum } from "./module2.js";
+import muldiv from "./module2.js";
+const { multiply, divide } = muldiv;
+console.log("Sum: ", sum(5, 10));
+console.log("Multiply: ", multiply(5, 10));
+console.log("Divide: ", divide(10, 2));

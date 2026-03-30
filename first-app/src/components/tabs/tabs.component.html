@@ -1,0 +1,18 @@
+
+<div class="flex flex-col items-center justify-center">
+
+    <div class="mb-2">
+    <p>Message from child: <span>{{msgFromChild | na}}</span></p>
+</div>
+<div class="flex gap-3">
+  <div [class]="currentTab=='Tab1'?'border-4 border-slate-800':''" (click)="toggleTab('Tab1')" class="bg-red-800 p-2 rounded-lg text-amber-50 cursor-pointer text-center flex justify-center items-center">Tab1</div>
+  <div [ngClass]="currentTab=='Tab2'?'border-4 border-red-800':''" (click)="toggleTab('Tab2')" class="bg-slate-800 p-2 rounded-lg text-amber-50 cursor-pointer text-center flex justify-center items-center">
+    Tab2
+  </div>
+</div>
+<div class="flex justify-center items-center my-1">
+    <app-tab1 (eventEmitter)="recieveMessage($event)" [msg]="pass" *ngIf="currentTab=='Tab1'"></app-tab1>
+    <app-tab2 (dataToParent)="recieveMessage($event)" [msg]="pass" *ngIf="currentTab=='Tab2'"></app-tab2>
+</div>
+
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "sarfaraz-api-wrapper",
+  "version": "1.0.0",
+  "description": "simple http api wrapper",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "http",
+    "fetch",
+    "wrapper"
+  ],
+  "author": "Md Sarfaraz Afzal",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}

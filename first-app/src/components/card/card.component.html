@@ -1,0 +1,89 @@
+<div class="flex justify-center items-center h-screen w-screen">
+  @if (profile()) {
+    <div class="flex justify-center items-center h-screen w-screen bg-slate-50">
+      <div
+        class="max-w-md mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 transition-all hover:shadow-slate-200"
+      >
+        
+       
+
+        <div class="px-6 pb-6 text-center">
+          
+          <div class="relative flex justify-center mt-6">
+            <img
+              [src]="profile()?.avatar_url"
+              [alt]="profile()?.name"
+              class="w-24 h-24 rounded-2xl border-4 border-white shadow-lg object-cover bg-white"
+            />
+          </div>
+
+          
+          <div class="mt-4">
+            <h2 class="text-xl font-bold text-slate-800">
+              {{ profile()?.name |  uppercase}}
+            </h2>
+            <p class="text-slate-500 text-sm font-medium">
+              {{ "@" + profile()?.login | lowercase }}
+            </p>
+            <p class="mt-3 text-slate-600 text-sm leading-relaxed px-2">
+              {{ profile()?.bio }}
+            </p>
+          </div>
+
+          
+          <div
+            class="grid grid-cols-3 gap-4 mt-6 py-4 border-y border-slate-50"
+          >
+            <div>
+              <span class="block text-lg font-bold text-slate-800">{{
+                profile()?.public_repos
+              }}</span>
+              <span
+                class="text-[10px] uppercase tracking-wider text-slate-400 font-bold"
+                >Repos</span
+              >
+            </div>
+            <div>
+              <span class="block text-lg font-bold text-slate-800">{{
+                profile()?.followers
+              }}</span>
+              <span
+                class="text-[10px] uppercase tracking-wider text-slate-400 font-bold"
+                >Followers</span
+              >
+            </div>
+            <div>
+              <span class="block text-lg font-bold text-slate-800">{{
+                profile()?.following
+              }}</span>
+              <span
+                class="text-[10px] uppercase tracking-wider text-slate-400 font-bold"
+                >Following</span
+              >
+            </div>
+          </div>
+
+          
+          <div class="mt-6 space-y-3">
+            <a
+              [href]="profile()?.html_url"
+              target="_blank"
+              class="flex items-center justify-center gap-2 w-full py-3 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-200"
+            >
+              View GitHub
+            </a>
+            <button routerLink="/app" class="text-sm cursor-pointer text-slate-400 hover:text-slate-600 font-medium">
+                    ← Back to Home
+                </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div
+      class="flex h-screen w-screen justify-center items-center font-bold text-slate-400 animate-pulse"
+    >
+      Loading Profile...
+    </div>
+  }
+</div>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Welcome Back</h1>
+      </header>
+      <form class="login-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="text"
+            id="email"
+            class="input-field"
+            placeholder="todo@cbnits.com"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            id="password"
+            class="input-field"
+            placeholder="todo123"
+            required
+          />
+        </div>
+        <p class="error-msg"></p>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <p style="font-size: small; color: #64748b; padding-top: 16px; text-align: center;">New here? <span id="toggle-register" style="text-decoration: underline; cursor: pointer;">Register here</span></p>
+    </div>
+
+    <div class="container hidden">
+      <header>
+        <h1>My Tasks</h1>
+      </header>
+
+      <form class="todo-form">
+        <input type="text" class="todo-input" placeholder="Add a new task..." />
+        <button type="submit" class="add-btn">Add</button>
+      </form>
+
+      <ul class="todo-list"></ul>
+
+      <div class="empty-state">
+        <p>No tasks found. Start by adding one!</p>
+      </div>
+
+      <footer>
+        <span id="items-left" class="items-count">0 items left</span>
+        <button class="logout-btn">Logout</button>
+        <button class="clear-btn">Clear Completed</button>
+      </footer>
+    </div>
+    <div class="container">
+      <header>
+        <h1>Welcome</h1>
+      </header>
+      <form class="register-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="text"
+            id="reg-email"
+            class="input-field"
+            placeholder="todo@cbnits.com"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input
+            type="password"
+            id="reg-password"
+            class="input-field"
+            placeholder="todo123"
+            required
+          />
+        </div>
+        <p class="error-msg reg-error"></p>
+        <button type="submit" class="login-btn">Register</button>
+      </form>
+      <p style="font-size: small; color: #64748b; padding-top: 16px; text-align: center;">Already have an account? <span id="toggle-login" style="text-decoration: underline; cursor: pointer;">Login here</span></p>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
